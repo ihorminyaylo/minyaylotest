@@ -1,4 +1,4 @@
-package Kolio;
+package lesson02.homework;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -7,10 +7,10 @@ import java.util.List;
 /**
  * Created by user on 22.04.2017.
  */
-public class task {
+public class Task {
     public static void main(String[] args) {
 
-        List<Person> listPerson = new ArrayList<Person>();
+        List<Person> listPerson = new ArrayList<>();
         Person gosha = new Person("Igor", LocalDate.of(1995,2,19));
         listPerson.add(gosha);
         Person karina = new Person("Karina", LocalDate.of(1995,7,18));
@@ -30,6 +30,8 @@ public class task {
             System.out.println(person.howAge());
         }
         // d) 3. Output information about of the given person with method "output()"
-        artyom.output();
+        Person newPerson = Person.input();
+        newPerson.output();
+
     }
 }
