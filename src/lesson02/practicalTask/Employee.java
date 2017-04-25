@@ -41,6 +41,7 @@ public class Employee {
     }
 
     public void setHours(int hours) {
+        totalSum += hours - this.hours;
         this.hours = hours;
     }
     // d) default constructor, constructor with two parameters(name and rate), constructor with 3 parametrs
@@ -53,16 +54,17 @@ public class Employee {
         this.name = name;
         this.rate = rate;
         this.hours = hours;
+        totalSum += hours;
     }
     // e) 1. method salary
     public double salary() {
-        return rate * hours;
+        return getRate() * getHours();
     }
 
     // e) 2. method toString
     @Override
     public String toString() {
-        return "Name of employee - " + getName() + ". This employee worked " + hours + " in this month." +
+        return "Name of employee - " + getName() + ". This employee worked " + getHours() + " in this month." +
                 "It's rate = " + rate + " uah. Salary for this month = " + salary() + " uah.";
     }
     // e) 3. method changeRate
@@ -72,6 +74,6 @@ public class Employee {
     // e) 4. method bonuses
     public String bonuses() {
         double bonus = salary() * 1.1;
-        return "Salaty with bonuses = " + bonus + " uah.";
+        return String.format("Salaty with bonuses = %.2f uah.", bonus);
     }
 }
