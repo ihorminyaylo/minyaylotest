@@ -51,15 +51,19 @@ public class Person {
         Scanner sc = new Scanner(System.in);
         System.out.println("Input name");
         String newName = sc.nextLine();
-        try {
-            System.out.println("Input birth date");
-            LocalDate newDate = LocalDate.parse(sc.nextLine());
-            return new Person(newName, newDate);
+        boolean success = false;
+        LocalDate newDate = null;
+        while (!success) {
+            try {
+                System.out.println("Input birth date(in format(year-month-day)");
+                newDate = LocalDate.parse(sc.nextLine());
+                success = true;
+            } catch (Exception e) {
+                System.out.println("Date isn't correct.");
+                //System.out.println("Input correct date(in format(year-month-day)");
+            }
         }
-        catch (Exception e) {
-            System.out.println("Date isn't correct.");
-            return new Person(newName, null);
-        }
+        return new Person(newName, newDate);
     }
     // d) 3. implementation of the method "output()"
     public void output() {
