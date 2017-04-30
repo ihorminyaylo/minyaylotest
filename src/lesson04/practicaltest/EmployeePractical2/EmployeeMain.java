@@ -30,5 +30,8 @@ public class EmployeeMain {
             System.out.println("Name of employee " + element.getName() + ". Department = " + element.getDepartment()
             +". Salary = " + element.getSalary());
         }
+        System.out.println("Input, what do you want to print of Department employee?");
+        int wantDepartment = sc.nextInt();
+        System.out.println(Employee.employeeOfDepartment(list,2));
     }
 }

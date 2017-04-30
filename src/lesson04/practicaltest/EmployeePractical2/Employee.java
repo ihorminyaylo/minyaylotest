@@ -50,7 +50,19 @@ public class Employee {
             }
         }
         return list;
-
+    }
+    public static List<Employee> employeeOfDepartment(List<Employee> list, int wantDepartment) {
+        List<Employee> listDepartment = new ArrayList<>();
+        for (Employee worker: list) {
+            if (worker.getDepartment() == wantDepartment) {
+                listDepartment.add(worker);
+            }
+        }
+        return listDepartment;
     }
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

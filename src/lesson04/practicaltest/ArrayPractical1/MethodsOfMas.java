@@ -13,7 +13,7 @@ public class MethodsOfMas {
         }
         return max;
     }
-    public static int sumPlus(int[] mas) {
+    public static int sumPositive(int[] mas) {
         int sum = 0;
         for (int element : mas) {
             if (element > 0) {
@@ -43,10 +43,10 @@ public class MethodsOfMas {
             }
         }
         if (countPlus > countMinus) {
-            return "Value of plus more than value of minus";
+            return "Value of plus more than value of negative";
         }
         else if (countMinus > countPlus) {
-            return "Value of minus more than value of plus";
+            return "Value of minus more than value of positive";
         }
         else {
             return "Value of plus = Value of minus";
