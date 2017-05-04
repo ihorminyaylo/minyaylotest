@@ -27,6 +27,6 @@ public class PracticalTestMain {
                 System.out.println("Count of positive elements less introduced index, please, try again");
             }
         }
-        System.out.println("Minimum is " + MethodsOfArray.minOfArray(list));
+        System.out.println("Minimum[index, minimum] is " + MethodsOfArray.minOfArray(list));
     }
 }

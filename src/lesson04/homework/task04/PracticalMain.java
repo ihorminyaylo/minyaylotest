@@ -1,5 +1,7 @@
 package lesson04.homework.task04;
 
+import lesson04.homework.task3.ReadNumber;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,11 +11,16 @@ import java.util.Scanner;
  */
 public class PracticalMain {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        List<Integer> list = new ArrayList<>();
-        boolean success = false;
+        List<Integer> list  = new ArrayList<>();
+        int number = 0;
+        System.out.println("Input numbers, if you input negative number, input console is end");
         while (true) {
-            list.add(sc.nextInt());
+            number = ReadNumber.readNumber(); //This method in task3
+            if (number < 0) {
+                break;
+            }
+            list.add(number);
         }
+        System.out.println("Product of positive numbers with = \"0\" " + ProductOfPositiveNumbers.productOfPositiveNumbers(list));
     }
 }

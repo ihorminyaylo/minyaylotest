@@ -19,6 +19,11 @@ public interface MethodsOfArray {
                 }
             }
         }
+        if (type.equals("all")) {
+            for (int a : list) {
+                    listSort.add(a);
+            }
+        }
         int resultList = 0;
         Collections.sort(listSort, new Comparator<Integer>() {
             @Override
@@ -32,11 +37,10 @@ public interface MethodsOfArray {
     public static int IndexOfPositiveElement(List<Integer> list, int indexWantToOut) {
         List<Integer> listSort = sortList(list, "positive");
         int resultList = 0;
-        int a2 = listSort.get(indexWantToOut - 1);
+        int elementOfPositive = listSort.get(indexWantToOut - 1);
         for (int i = 0; i < list.size(); i++) {
-            if (list.get(i).equals(a2)) {
-                resultList = i+1;
-                break;
+            if (list.get(i).equals(elementOfPositive)) {
+                return i;
             }
         }
         return resultList;
