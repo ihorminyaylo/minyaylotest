@@ -7,6 +7,6 @@ import java.util.*;
 
 public class MethodForMap {
     public static int searchWithKey(Map<Integer, String> map, int key) {
-
+        return key;
     }
 }
