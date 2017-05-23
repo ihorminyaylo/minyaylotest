@@ -1,14 +1,13 @@
 package lesson06.homework.homework2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Created by user on 05.05.2017.
+ * Created by user on 09.05.2017.
  */
-import lesson06.homework.homework1.MethodsOfSet;
-import lesson06.homework.homework2.MethodsOfMap;
 
-import java.util.*;
-
-public class Homework2Main {
+public class Main2HW {
     public static void main(String[] args) {
         Map<String, String> mapOfPerson = new HashMap<>();
         mapOfPerson.put("Veres", "Orest");

@@ -23,10 +23,12 @@ public class MethodsOfMap {
         return false;
     }
     public static Map<String, String> mapWithoutEqualsValue(Map<String, String> map) {
-        //Map
+        Map<String, String> result = new HashMap<>();
         for (Map.Entry<String, String> entry : map.entrySet()) {
-
+            if (!entry.getValue().equals("Orest")) {
+                result.put(entry.getKey(), entry.getValue());
+            }
         }
-        return map;
+        return result;
     }
 }
