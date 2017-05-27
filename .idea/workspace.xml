@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca639c22-216b-491e-8890-c8ebf318042c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/student/IO.java" afterPath="$PROJECT_DIR$/src/main/java/student/IO.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/com/target/" />
@@ -70,7 +71,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/student/IO.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -174,7 +175,6 @@
         <option value="$PROJECT_DIR$/com/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/student/StudentBuilder.java" />
         <option value="$PROJECT_DIR$/src/main/java/student/StudentService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/student/IO.java" />
         <option value="$PROJECT_DIR$/src/main/java/student/StudentDBService.java" />
         <option value="$PROJECT_DIR$/src/main/java/student/XmlIO.java" />
         <option value="$PROJECT_DIR$/src/main/java/student/Mark.java" />
@@ -188,6 +188,7 @@
         <option value="$PROJECT_DIR$/src/main/java/student/Main.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/student/JsonIO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/student/IO.java" />
       </list>
     </option>
   </component>
@@ -594,7 +595,14 @@
       <option name="project" value="LOCAL" />
       <updated>1495894204833</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="&quot;new branch&quot;">
+      <created>1495895526391</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1495895526391</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -670,7 +678,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;first commit of my student&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;first commit of my student&quot;" />
+    <MESSAGE value="&quot;new branch&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;new branch&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -958,7 +967,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/student/IO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
