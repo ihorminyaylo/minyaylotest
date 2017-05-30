@@ -1,8 +1,6 @@
 package student;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,7 +21,7 @@ public class StudentBuilder {
         return this;
     }
 
-    public StudentBuilder firstName(String firstName) throws InvalidFormatException{
+    public StudentBuilder firstName(String firstName) throws InvalidFormatException {
         Matcher mLastName = pName.matcher(firstName);
         if (mLastName.matches()) {
             student.setFirstname(firstName);

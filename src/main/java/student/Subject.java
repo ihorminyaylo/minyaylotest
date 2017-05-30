@@ -1,7 +1,5 @@
 package student;
 
-import java.util.List;
-
 /**
  * Created by user on 04.05.2017.
  */

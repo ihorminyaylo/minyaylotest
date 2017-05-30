@@ -1,8 +1,15 @@
 package student;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -11,15 +18,15 @@ import java.util.*;
  */
 @XmlRootElement
 public class Student {
-    private Date jsonDate;
-
-
+    //private String UUID;
     private int id;
     private String lastname;
     private String firstname;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate birthDate;
-    private Map<Subject, List<Integer>> mapOfStudentSubjects = new HashMap<>();  // tableScore or listOfInteger or Subject()
-    private int groupNumber;  // String, 101a, 101
+    private List<Mark> marks = new ArrayList<>();  // new
+    private int groupNumber;
 
     public String getLastname() {
         return lastname;
@@ -43,20 +50,12 @@ public class Student {
         return birthDate;
     }
 
-    @XmlElement
+    @XmlJavaTypeAdapter(value = LocalDateAdapter.class)
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
 
-    public Map<Subject, List<Integer>> getMapOfStudentSubjects() {
-        return mapOfStudentSubjects;
-    }
-
-    @XmlTransient
-    public void setMapOfStudentSubjects(Map<Subject, List<Integer>> mapOfStudentSubjects) {
-        this.mapOfStudentSubjects = mapOfStudentSubjects;
-    }
 
     public int getGroupNumber() {
         return groupNumber;
@@ -76,51 +75,51 @@ public class Student {
         return id;
     }
 
+    public List<Mark> getMarks() {
+        return marks;
+    }
+
+    @XmlElement
+    public void setMarks(List<Mark> marks) {
+        this.marks = marks;
+    }
+
     public Student(){}
-    public Student(int id,String lastname, String firstname, LocalDate birthDate, Map<Subject, List<Integer>> mapOfStudentSubjects, int groupNumber) {
+
+    public Student(int id, String lastname, String firstname, LocalDate birthDate, List<Mark> marks, int groupNumber) {
         this.id = id;
         this.lastname = lastname;
         this.firstname = firstname;
         this.birthDate = birthDate;
-        this.mapOfStudentSubjects = mapOfStudentSubjects;
+        this.marks = marks;
         this.groupNumber = groupNumber;
     }
-    //
-    public Student(int id,String lastname, String firstname, Date jsonDate, Map<Subject, List<Integer>> mapOfStudentSubjects, int groupNumber) {
-        this.id = id;
-        this.lastname = lastname;
-        this.firstname = firstname;
-        this.jsonDate = jsonDate;
-        this.mapOfStudentSubjects = mapOfStudentSubjects;
-        this.groupNumber = groupNumber;
-    }
-    //
     public Student(String lastname, String firstname, LocalDate birthDate, int groupNumber) {
         this.lastname = lastname;
         this.firstname = firstname;
         this.birthDate = birthDate;
         this.groupNumber = groupNumber;
     }
-    public Student(String lastname, String firstname, Map<Subject, List<Integer>> mapOfStudentSubjects) {
+
+    public Student(String lastname, String firstname, List<Mark> marks) {
         this.lastname = lastname;
         this.firstname = firstname;
-        this.mapOfStudentSubjects = mapOfStudentSubjects;
+        this.marks = marks;
     }
 
     public double averageScore() {
         double sumScore = 0;
         double averageScore = 1;
         int countOfSubject = 0;
-        for (Map.Entry<Subject, List<Integer>> entry : getMapOfStudentSubjects().entrySet()) {
-            for (int a : entry.getValue()) {
-                sumScore += a;
-                countOfSubject++;
-            }
+        Iterator<Mark> markIterator = marks.iterator();
+        while (markIterator.hasNext()) {
+            Mark a = markIterator.next();
+            sumScore += a.getMark();
+            countOfSubject++;
         }
         averageScore = sumScore/countOfSubject;
         return averageScore;
     }
-
     @Override
     public boolean equals(Object obj) {
         return super.equals(obj);
@@ -130,10 +129,11 @@ public class Student {
         return "Student: " + getLastname() + " " + getFirstname() + ". Birth date - " + getBirthDate()
                 + ". Group number - " + getGroupNumber() + ". Average score - " + averageScore();
     }
+
     public static void printFullInfo(Student student) {
         System.out.println("Student: " + student.getLastname() + " " + student.getFirstname() +
         ". Birth date - " + student.getBirthDate() + ". Group number - " + student.getGroupNumber());
-        System.out.println("Scores of student : " + student.getMapOfStudentSubjects());
+        System.out.println("Scores of student : " + student.getMarks());
     }
 
     public static void printForSort(List<Student> list) {

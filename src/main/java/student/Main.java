@@ -3,40 +3,36 @@ package student;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.xml.bind.JAXBException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.*;
 
 /**
  * Created by user on 04.05.2017.
  */
 public class Main {
-    public static void main(String[] args) throws InvalidFormatException, SQLException, JsonProcessingException, JAXBException {
+    public static void main(String[] args) throws InvalidFormatException, SQLException, IOException, JAXBException {
         List<Student> listOfStudents = new ArrayList<>();
         List<Group> listOfGroup = new ArrayList<>();
 
+        /*List<Student> list = StudentDBService.sortOfStudentByName();
+        for (Student student : list) {
+            Student.printFullInfo(student);
+        }*/
+        Student stud1 = new StudentBuilder().firstName("Kdsakadsad").lastName("Vaadsasds").
+                birthDate(LocalDate.of(1997,5,15)).groupNumber(121).get();
+        Student student = StudentDBService.getStudentById(38);
+        student.setFirstname("Murka");
+        StudentDBService.updateStudent(student);
 
-        Student student = new StudentBuilder().firstName("Kdsak").lastName("Vaadsasds").
-                birthDate(LocalDate.of(1997,6,15)).groupNumber(364).get();
-        StudentDBService.createStudent(student);
-        Date date = Date.from(student.getBirthDate().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        StudentService st = new StudentService(stud1);
 
-        System.out.println(date);
-
-        IO io1 = new JsonIO();
-        System.out.println(io1.convertFromStudentToString(student));
-
-        IO io2 = new XmlIO();
-        System.out.println(io2.convertFromStudentToString(student));
-
-        IO io3 = new JsonIO();
-
-        System.out.println(io3.convertStringToStudent(io1.convertFromStudentToString(student)));
-
+        st.addScoreForStudent(Subject.ENGLISH, 85);
+        st.addScoreForStudent(Subject.ENGLISH, 100);
+        st.addScoreForStudent(Subject.MATHEMATICS, 99);
+        System.out.println(StudentDBService.getStudentById(38));
        /* Student stud1 = new StudentBuilder().lastName("Minyaylo").firstName("Igor")
                 .birthDate(LocalDate.of(1995,02,19)).groupNumber(321).get();
         StudentService st = new StudentService(stud1);

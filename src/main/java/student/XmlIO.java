@@ -1,12 +1,10 @@
 package student;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sun.org.apache.xml.internal.utils.ObjectStack;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.File;
 import java.io.StringWriter;
 
 /**
@@ -35,7 +33,10 @@ public class XmlIO implements IO {
     }
 
     @Override
-    public Student convertStringToStudent(String string) {
-        return null;
+    public Student convertStringToStudent(String string) throws JAXBException {
+        JAXBContext jaxbContext = JAXBContext.newInstance(Student.class);
+        Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+        Student student = (Student) jaxbUnmarshaller.unmarshal(new File(string));
+        return student;
     }
 }

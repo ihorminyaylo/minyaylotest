@@ -1,9 +1,6 @@
 package student;
 
-import java.time.LocalDate;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by user on 09.05.2017.
@@ -26,30 +23,26 @@ public class StudentService {
     }
 
     //Add score for student
-    public void addScoreForStudent(Subject newSubject, int newScore) {
-        if (student.getMapOfStudentSubjects().containsKey(newSubject)) {
-            student.getMapOfStudentSubjects().get(newSubject).add(newScore);
-        }
-        else {
-            List<Integer> listOfScore = new ArrayList<>();
-            listOfScore.add(newScore);
-            student.getMapOfStudentSubjects().put(newSubject, listOfScore);
-        }
-    }
-    // Check student have the subject
-    /*public boolean haveStudentScore(Subject haveSubject) {
-        boolean a = false;
-        if (student.getMapOfStudentSubjects() == null) {
-            return a;
-        }
-        for (Map.Entry<Subject, List<Integer>> entry : student.getMapOfStudentSubjects().entrySet()) {
-            if (entry.getKey().equals(haveSubject)) {
-                a = true;
+    public void addScoreForStudent(Subject newSubject, int newScore) throws InvalidFormatException {
+        if (newScore >= 0 && newScore <= 100) {
+            Iterator<Mark> iterator = student.getMarks().iterator();
+            boolean succses = false;
+            while (iterator.hasNext()) {
+                Mark mark = iterator.next();
+                if (mark.getSubject().equals(newSubject)) {
+                    mark.setMark(newScore);
+                    succses = true;
+                    break;
+                }
+            }
+            if (succses = true) {
+                student.getMarks().add(new Mark(newSubject, newScore));
             }
         }
-        return a;
-    }*/
-    // Change group for student
+        else {
+            throw new InvalidFormatException("Score shouldn't be less 0 and more 100");
+        }
+    }
     public void changeGroup(int newGroup) throws InvalidFormatException {
         if (newGroup > 0 && newGroup < 600) {
             student.setGroupNumber(newGroup);
